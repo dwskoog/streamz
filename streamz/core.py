@@ -77,7 +77,8 @@ class RefCounter:
         initial: int, optional
             The initial value of the reference counter
         cb: callable
-            The function to use a callback when the reference count reaches zero
+            The function to use as a callback when the reference count reaches zero.
+            It must take no additional arguments and its return value is ignored.
         loop: tornado.ioloop.IOLoop
             The loop on which to create a callback when the reference count
             reaches zero
@@ -100,7 +101,7 @@ class RefCounter:
         """Release the reference
 
         If the reference count is equal to or less than zero, the callback, if
-        provided will added to the provided loop or default loop
+        provided, is scheduled on the provided loop or default loop
 
         Parameters
         ----------

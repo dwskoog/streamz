@@ -1,10 +1,23 @@
 API
 ===
 
-Stream
-------
+RefCounter
+----------
 
 .. currentmodule:: streamz
+
+.. autosummary::
+   RefCounter
+
+.. autosummary::
+   RefCounter.release
+   RefCounter.retain
+
+.. automethod:: RefCounter.release
+.. automethod:: RefCounter.retain
+
+Stream
+------
 
 .. autosummary::
    Stream

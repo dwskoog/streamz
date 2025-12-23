@@ -625,6 +625,7 @@ def from_kafka_batched(topic, consumer_params, poll_interval='1s',
     ----------
     topic: str
         Kafka topic to consume from
+
     consumer_params: dict
         | Settings to set up the stream, see
         | https://docs.confluent.io/current/clients/confluent-kafka-python/#configuration
@@ -633,11 +634,14 @@ def from_kafka_batched(topic, consumer_params, poll_interval='1s',
         | bootstrap.servers: Connection string(s) (host:port) by which to reach Kafka
         | group.id: Identity of the consumer. If multiple sources share the same
         | group, each message will be passed to only one of them.
+
     poll_interval: number
         Seconds that elapse between polling Kafka for new messages
+
     npartitions: int (None)
         | Number of partitions in the topic.
         | If None, streamz will poll Kafka to get the number of partitions.
+
      refresh_partitions: bool (False)
         | Useful if the user expects to increase the number of topic partitions on the
         | fly, maybe to handle spikes in load. Streamz polls Kafka in every batch to
@@ -645,14 +649,18 @@ def from_kafka_batched(topic, consumer_params, poll_interval='1s',
         | streamz will automatically start reading data from the new partitions as well.
         | If set to False, streamz will not accommodate adding partitions on the fly.
         | It is recommended to restart the stream after decreasing the number of partitions.
+
     start: bool (False)
         Whether to start polling upon instantiation
+
     max_batch_size: int
         The maximum number of messages per partition to be consumed per batch
+
     keys: bool (False)
         | Whether to extract keys along with the messages.
         | If True, this will yield each message as a dict:
         | {'key':msg.key(), 'value':msg.value()}
+
     engine: str (None)
         | If engine is set to "cudf", streamz reads data (messages must be JSON)
         | from Kafka in an accelerated manner directly into cuDF (GPU) dataframes.
